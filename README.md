@@ -45,6 +45,10 @@ It is used to represent the value of a node and that is used to perform the sear
 
 It is very similar to the search function. You again start at the root of the tree and go down recursively, searching for the right place to insert our new node, in the same way as explained in the search function. If a node with the same value is already in the tree, you can choose to either insert the duplicate or not. Some trees allow duplicates, some don't. It depends on the certain implementation.
 
+Whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.
+
+![Insert Operation](
+
 ### Search Operation:
 
 When we need to search an element in the binary tree, we start the searching from the root node and then compare the item value or element value with key values. If the search value is less than the key value, then we perform the search on the left side and if the search value is greater than key value then we perform a search at the right side.
