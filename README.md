@@ -142,7 +142,19 @@ The time complexity for creating a tree is  O(1) . The time complexity for searc
 
 ### Preorder Traversal:
 
-We traverse the node in a pre-order manner as per requirement.
+This traversal first accesses the current node value, then traverses the left and right sub-trees respectively.
+
+	void preOrder(struct node* root) {
+        if (root == null) {
+                return;
+        }
+        // Print the current node value
+        printf("%d ", root.data);
+        // Travel the left sub-tree first.
+        preOrder(root.left);
+        // Travel the right sub-tree next.
+        preOrder(root.right);
+	}
 
 ### Inorder Traversal:
 
@@ -163,4 +175,16 @@ This traversal first goes over the left subtree of the root node, then accesses 
 
 ### Postorder Traversal:
 
-We traverse the node in a post-order manner as per requirement.
+This traversal puts the root value at last, and goes over the left and right sub-trees first. The relative order of the left and right sub-trees remain the same. Only the position of the root changes in all the above mentioned traversals.
+
+	void postOrder(struct node* root) {
+        if (root == null) {
+                return;
+        }
+        // Travel the left sub-tree first.
+        postOrder(root.left);
+        // Travel the right sub-tree next.
+        postOrder(root.right);
+        // Print the current node value
+        printf("%d ", root.data);
+	}
