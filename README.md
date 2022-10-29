@@ -47,19 +47,19 @@ It is very similar to the search function. You again start at the root of the tr
 
 Whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.
 
-    void insert(int data) {
-   struct node *tempNode = (struct node*) malloc(sizeof(struct node));
-   struct node *current;
-   struct node *parent;
+    void insert(int data){
+   	struct node *tempNode = (struct node*) malloc(sizeof(struct node));
+   	struct node *current;
+   	struct node *parent;
 
-   tempNode->data = data;
-   tempNode->leftChild = NULL;
-   tempNode->rightChild = NULL;
+   	tempNode->data = data;
+   	tempNode->leftChild = NULL;
+   	tempNode->rightChild = NULL;
 
-   //if tree is empty
-   if(root == NULL) {
+   	//if tree is empty
+   	if(root == NULL) {
       root = tempNode;
-   } else {
+   	} else {
       current = root;
       parent = NULL;
 
@@ -83,11 +83,11 @@ Whenever an element is to be inserted, first locate its proper location. Start s
             if(current == NULL) {
                parent->rightChild = tempNode;
                return;
-            }
-         }
-      }            
-   }
-}        
+            				}
+         			}
+      			}            
+   		}
+	}        
 
 
 ### Search Operation:
