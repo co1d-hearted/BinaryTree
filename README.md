@@ -196,3 +196,6 @@ Binary trees are mainly used for searching and sorting as they provide a means t
 - They can be used to reflect relationships between data.
 - They can store an arbitrary number of data values.
 
+Binary trees can also be used for classification purposes. A decision tree is a supervised machine learning algorithm. The binary tree data structure is used here to emulate the decision-making process. A decision tree usually begins with a root node. The internal nodes are conditions or dataset features. Branches are decision rules while the leave nodes are the outcomes of the decision. For example, suppose we want to classify apples. The decision tree for this problem will be as follows:
+
+![Decision Tree](
