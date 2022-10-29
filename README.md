@@ -58,8 +58,8 @@ Whenever an element is to be inserted, first locate its proper location. Start s
 
    	//if tree is empty
    	if(root == NULL) {
-      root = tempNode;
-   	} else {
+      root = tempNode;} 
+      else {
       current = root;
       parent = NULL;
 
@@ -83,10 +83,10 @@ Whenever an element is to be inserted, first locate its proper location. Start s
             if(current == NULL) {
                parent->rightChild = tempNode;
                return;
-            				}
-         			}
-      			}            
-   		}
+        }
+        }
+      	}            
+   	}
 	}        
 
 
@@ -103,6 +103,42 @@ There are 3 cases that can happen when you are trying to delete a node. If it ha
   - Two subtrees (two children): You have to find and replace the node you want to delete with its inorder successor (the leftmost node in the right  subtree).
 
 The time complexity for creating a tree is  O(1) . The time complexity for searching, inserting or deleting a node depends on the height of the tree  h , so the worst case is  O(h)  in case of skewed trees.
+
+	void deleteNode(struct node* root, int data){
+
+    	if (root == NULL) root=tempnode; 
+
+    	if (data < root->key) 
+        root->left = deleteNode(root->left, key); 
+  
+
+    	else if (key > root->key) 
+        	root->right = deleteNode(root->right, key); 
+
+    	else
+    	{ 
+        	if (root->left == NULL) 
+        	{ 
+            	struct node *temp = root->right; 
+            	free(root); 
+            	return temp; 
+        	} 
+        	else if (root->right == NULL) 
+        	{ 
+            	struct node *temp = root->left; 
+            	free(root); 
+            	return temp; 
+        	} 
+  
+        	struct node* temp = minValueNode(root->right); 
+ 
+        	root->key = temp->key; 
+
+        	root->right = deleteNode(root->right, temp->key); 
+    	} 
+    	return root; 
+
+	}
 
 ### Preorder Traversal:
 
