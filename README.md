@@ -43,11 +43,21 @@ It is used to represent the value of a node and that is used to perform the sear
 
 ### Insert Operation:
 
-Binary tree representation starts with the insertion operation. After that, we insert the node on its proper location and the node location is based on the key value of the node.
+It is very similar to the search function. You again start at the root of the tree and go down recursively, searching for the right place to insert our new node, in the same way as explained in the search function. If a node with the same value is already in the tree, you can choose to either insert the duplicate or not. Some trees allow duplicates, some don't. It depends on the certain implementation.
 
 ### Search Operation:
 
-When we need to search an element in the binary tree, then we start the searching from the root node and then compare the item value or element value with key values. If the search value is less than the key value, then we perform the search on the left side and if the search value is greater than key value then we perform a search at the right side.
+When we need to search an element in the binary tree, we start the searching from the root node and then compare the item value or element value with key values. If the search value is less than the key value, then we perform the search on the left side and if the search value is greater than key value then we perform a search at the right side.
+
+### Deletion:
+
+There are 3 cases that can happen when you are trying to delete a node. If it has,
+
+  - No subtree (no children): This one is the easiest one. You can simply just delete the node, without any additional actions required.
+  - One subtree (one child): You have to make sure that after the node is deleted, its child is then connected to the deleted node's parent.
+  - Two subtrees (two children): You have to find and replace the node you want to delete with its inorder successor (the leftmost node in the right  subtree).
+
+The time complexity for creating a tree is  O(1) . The time complexity for searching, inserting or deleting a node depends on the height of the tree  h , so the worst case is  O(h)  in case of skewed trees.
 
 ### Preorder Traversal:
 
