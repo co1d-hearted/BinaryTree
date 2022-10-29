@@ -17,3 +17,7 @@ Why would a programmer want to uses trees. Well, here are a few reasons:
   - Trees (with some ordering e.g., BST) provide moderate access/search (quicker than Linked List and slower than arrays). 
   - Trees provide moderate insertion/deletion (quicker than Arrays and slower than Unordered Linked Lists). 
   - Like Linked Lists and unlike Arrays, Trees don’t have an upper limit on the number of nodes as nodes are linked using pointers.
+
+## How do Binary Trees Work
+
+![ALT](images/Binary-Tree-in-Data-Structure-1.png.png)
