@@ -193,6 +193,6 @@ This traversal puts the root value at last, and goes over the left and right sub
 
 Binary trees are mainly used for searching and sorting as they provide a means to store data hierarchically. Some common operations that can be conducted on binary trees include insertion, deletion, and traversal. The main advantage of using binary trees is simplicity. Binary trees possess a simple-to-understand structure for data management and organization. Additionally, some benefits of binary trees are:
 	
-	- They can be used to reflect relationships between data.
-	- They can store an arbitrary number of data values.
+- They can be used to reflect relationships between data.
+- They can store an arbitrary number of data values.
 
