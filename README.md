@@ -176,7 +176,7 @@ This traversal first goes over the left subtree of the root node, then accesses 
 ### Postorder Traversal:
 
 This traversal puts the root value at last, and goes over the left and right sub-trees first. The relative order of the left and right sub-trees remain the same. Only the position of the root changes in all the above mentioned traversals.
-
+### Code Example
 	void postOrder(struct node* root) {
         if (root == null) {
                 return;
@@ -199,3 +199,4 @@ Binary trees are mainly used for searching and sorting as they provide a means t
 Binary trees can also be used for classification purposes. A decision tree is a supervised machine learning algorithm. The binary tree data structure is used here to emulate the decision-making process. A decision tree usually begins with a root node. The internal nodes are conditions or dataset features. Branches are decision rules while the leave nodes are the outcomes of the decision. For example, suppose we want to classify apples. The decision tree for this problem will be as follows:
 
 ![Decision Tree](Decision-Tree.webp)
+
