@@ -46,7 +46,7 @@ It is used to represent the value of a node and that is used to perform the sear
 It is very similar to the search function. You again start at the root of the tree and go down recursively, searching for the right place to insert our new node, in the same way as explained in the search function. If a node with the same value is already in the tree, you can choose to either insert the duplicate or not. Some trees allow duplicates, some don't. It depends on the certain implementation.
 
 Whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.
-
+### Code Example
     void insert(int data){
    	struct node *tempNode = (struct node*) malloc(sizeof(struct node));
    	struct node *current;
@@ -103,7 +103,7 @@ There are 3 cases that can happen when you are trying to delete a node. If it ha
   - Two subtrees (two children): You have to find and replace the node you want to delete with its inorder successor (the leftmost node in the right  subtree).
 
 The time complexity for creating a tree is  O(1) . The time complexity for searching, inserting or deleting a node depends on the height of the tree  h , so the worst case is  O(h)  in case of skewed trees.
-
+### Code Example
 	void deleteNode(struct node* root, int data){
 
     	if (root == NULL) root=tempnode; 
@@ -143,7 +143,7 @@ The time complexity for creating a tree is  O(1) . The time complexity for searc
 ### Preorder Traversal:
 
 This traversal first accesses the current node value, then traverses the left and right sub-trees respectively.
-
+### Code Example
 	void preOrder(struct node* root) {
         if (root == null) {
                 return;
@@ -159,7 +159,7 @@ This traversal first accesses the current node value, then traverses the left an
 ### Inorder Traversal:
 
 This traversal first goes over the left subtree of the root node, then accesses the current node, followed by the right subtree of the current node. The code represents the base case too, which says that an empty tree is also a binary search tree.
-
+### Code Example
 	void inOrder(struct node* root) {
         // Base case
         if (root == null) {
