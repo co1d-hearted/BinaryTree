@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        
+            <title>Binary Search Trees: BST Explained with Examples</title>
+        
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+        
+            <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Binary Search Trees_ BST Explained with Examples_files/css2">
+        
+
+        
+        
+    <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Binary Search Trees_ BST Explained with Examples_files/prism.min.css">
+<noscript><link rel="stylesheet" href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism.min.css"></noscript>
+<link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Binary Search Trees_ BST Explained with Examples_files/prism-unescaped-markup.css">
+<noscript><link rel="stylesheet" href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-unescaped-markup.css"></noscript>
+
+<script src="./Binary Search Trees_ BST Explained with Examples_files/f(4).txt"></script><script src="./Binary Search Trees_ BST Explained with Examples_files/f(5).txt" id="google_shimpl"></script><script type="text/javascript" async="" src="./Binary Search Trees_ BST Explained with Examples_files/js"></script><script type="text/javascript" async="" src="./Binary Search Trees_ BST Explained with Examples_files/analytics.js"></script><script async="" src="./Binary Search Trees_ BST Explained with Examples_files/gtm.js"></script><script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-unescaped-markup.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-markup-templating.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-bash.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-c.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-clojure.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-cpp.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-csharp.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-css.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-docker.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-elixir.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-erlang.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-git.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-go.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-graphql.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-haskell.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-java.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-javascript.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-json.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-jsx.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-julia.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-kotlin.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-lua.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-markup.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-php.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-python.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-r.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-ruby.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-rust.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-scala.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-sql.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-swift.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-typescript.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-yaml.min.js"></script>
+<script defer="" type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/prism-dart.min.js"></script>
+
+
+
+        
+        <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Binary Search Trees_ BST Explained with Examples_files/global-26e2f3cde9.css">
+        <link rel="stylesheet" type="text/css" href="./Binary Search Trees_ BST Explained with Examples_files/screen-5a4f9d5c91.css">
+        <link rel="stylesheet" type="text/css" href="./Binary Search Trees_ BST Explained with Examples_files/search-bar-124f5f949c.css">
+
+        
+        <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/algoliasearch.min.js"></script>
+        <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/autocomplete.min.js"></script>
+
+        
+        <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/dayjs.min.js"></script>
+        <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/localizedFormat.min.js"></script>
+        <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/relativeTime.min.js"></script>
+
+        
+        
+            <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/en.min.js"></script>
+        
+
+        
+        <script>let client,index;document.addEventListener("DOMContentLoaded",(()=>{client=algoliasearch("QMJYL5WYTI","89770b24481654192d7a5c402c6ad9a0"),index=client.initIndex("news")})),document.addEventListener("DOMContentLoaded",(()=>{const e=window.screen.width,t=window.screen.height,n=e>=767&&t>=768?8:5,o=document.getElementById("search-form"),s=document.getElementById("search-input"),a=document.getElementById("dropdown-container");let i,d,c;s.addEventListener("input",(e=>{i=e.target.value})),o.addEventListener("submit",(e=>{e.preventDefault(),function(){if(d=document.getElementsByClassName("aa-cursor")[0],d&&i){const e=d.querySelector("a").href;window.location.assign(e)}else!d&&i&&c&&window.location.assign(`https://www.freecodecamp.org/news/search?query=${i}`)}()}));const l=autocomplete("#search-input",{hint:!1,keyboardShortcuts:["s",191],openOnFocus:!0,appendTo:a,debug:!0},[{source:autocomplete.sources.hits(index,{hitsPerPage:n}),debounce:250,templates:{suggestion:e=>(c=!0,`\n            <a href="${e.url}">\n              <div class="algolia-result">\n                <span>${e._highlightResult.title.value}</span>\n              </div>\n            </a>\n          `),empty:()=>(c=!1,'\n            <div class="aa-suggestion footer-suggestion no-hits-footer">\n              <div class="algolia-result">\n                <span>\n                  No tutorials found\n                </span>\n              </div>\n            </div>\n          '),footer:e=>{if(!e.isEmpty)return`\n              <div class="aa-suggestion footer-suggestion">\n                <a id="algolia-footer-selector" href="https://www.freecodecamp.org/news/search?query=${i}">\n                  <div class="algolia-result algolia-footer">\n                    See all results for ${i}\n                  </div>\n                </a>\n              </div>\n            `}}}]).on("autocomplete:selected",((e,t,n,o)=>{d=t?t.url:`https://www.freecodecamp.org/news/search?query=${i}`,"click"!==o.selectionMethod&&"tabKey"!==o.selectionMethod&&c&&window.location.assign(d)}));document.addEventListener("click",(e=>{e.target!==s&&l.autocomplete.close()}))})),document.addEventListener("DOMContentLoaded",(()=>{dayjs.extend(dayjs_plugin_localizedFormat),dayjs.extend(dayjs_plugin_relativeTime),dayjs.locale("en")}));const isAuthenticated=document.cookie.split(";").some((e=>e.trim().startsWith("jwt_access_token="))),isDonor=document.cookie.split(";").some((e=>e.trim().startsWith("isDonor=true")));</script>
+
+        
+        
+    
+        <script data-ad-client="ca-pub-9482786369113753" src="./Binary Search Trees_ BST Explained with Examples_files/f(6).txt" crossorigin="anonymous" async="" data-checked-head="true"></script>
+        <script data-test-label="toggle-ad-layout" defer="" src="./Binary Search Trees_ BST Explained with Examples_files/toggle-ad-layout-099254b065.js"></script>
+    
+
+
+        
+        
+    <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/fitvids-5d12072cbf.js"></script>
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t=document.querySelector(".post-full-content");t&&fitVids(t)}));</script>
+
+
+        
+        
+
+        <link rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" type="image/png">
+        
+        
+            <link rel="canonical" href="https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/">
+        
+        <meta name="referrer" content="no-referrer-when-downgrade">
+
+        
+
+        
+    <link rel="amphtml" href="https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/amp/">
+    <meta name="description" content="What is a Binary Search Tree? A tree is a data structure composed of nodes that has the following characteristics:  1. Each tree has a root node at the top (also known as Parent Node) containing     some value (can be any datatype).  2. The">
+
+    
+    <meta property="og:site_name" content="freeCodeCamp.org">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Binary Search Trees: BST Explained with Examples">
+    
+        <meta property="og:description" content="What is a Binary Search Tree? A tree is a data structure composed of nodes that has the following characteristics:  1. Each tree has a root node at the top (also known as Parent Node) containing     some value (can be any datatype).  2. The">
+    
+    <meta property="og:url" content="https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/">
+    <meta property="og:image" content="https://cdn-media-2.freecodecamp.org/w1280/5f9c9f48740569d1a4ca41c4.jpg">
+    <meta property="article:published_time" content="2019-11-16T17:58:00.000Z">
+    <meta property="article:modified_time" content="2021-04-28T20:50:56.000Z">
+    
+        <meta property="article:tag" content="Binary Search">
+    
+        <meta property="article:tag" content="Trees">
+    
+        <meta property="article:tag" content="Data Structures">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/freecodecamp">
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Binary Search Trees: BST Explained with Examples">
+    
+        <meta name="twitter:description" content="What is a Binary Search Tree? A tree is a data structure composed of nodes that has the following characteristics:  1. Each tree has a root node at the top (also known as Parent Node) containing     some value (can be any datatype).  2. The">
+    
+    <meta name="twitter:url" content="https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/">
+    <meta name="twitter:image" content="https://cdn-media-2.freecodecamp.org/w1280/5f9c9f48740569d1a4ca41c4.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="freeCodeCamp.org">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Binary Search, Trees, Data Structures">
+    <meta name="twitter:site" content="@freecodecamp">
+    
+
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+
+        
+    <script type="application/ld+json">{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "freeCodeCamp.org",
+		"url": "https://www.freecodecamp.org/news/",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg",
+			"width": 2100,
+			"height": 240
+		}
+	},
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://cdn-media-2.freecodecamp.org/w1280/5f9c9f48740569d1a4ca41c4.jpg",
+		"width": 1280,
+		"height": 720
+	},
+	"url": "https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "https://www.freecodecamp.org/news/"
+	},
+	"datePublished": "2019-11-16T17:58:00.000Z",
+	"dateModified": "2021-04-28T20:50:56.000Z",
+	"keywords": "Binary Search, Trees, Data Structures",
+	"description": "What is a Binary Search Tree?\nA tree is a data structure composed of nodes that has the following\ncharacteristics:\n\n 1. Each tree has a root node at the top (also known as Parent Node) containing\n    some value (can be any datatype).\n 2. The root node has zero or more child nodes.\n 3. Each child node has zero or more child nodes, and so on. This creates a\n    subtree in the tree. Every node has its own subtree made up of its children\n    and their children, etc. This means that every node on its",
+	"headline": "Binary Search Trees: BST Explained with Examples",
+	"author": {
+		"@type": "Person",
+		"name": "freeCodeCamp.org",
+		"url": "https://www.freecodecamp.org/news/author/freecodecamp/",
+		"sameAs": [],
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://www.freecodecamp.org/news/content/images/2021/05/freecodecamp-org-gravatar.jpeg",
+			"width": 250,
+			"height": 250
+		}
+	}
+}</script>
+
+
+        <meta name="generator" content="Eleventy">
+        <link rel="alternate" type="application/rss+xml" title="freeCodeCamp.org" href="https://www.freecodecamp.org/news/rss/">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+
+<!-- Web Monetization (https://webmonetization.org/) -->
+<meta name="monetization" content="$ilp.uphold.com/LJmbPn7WD4JB">
+<!-- end Web Monetization -->
+
+
+<!-- GAP -->
+
+<!-- end of GAP -->
+
+<!-- dataLayer setup -->
+<script>
+window.dataLayer = window.dataLayer || [];
+</script>
+<!-- End dataLayer setup -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5D6RKKP');</script>
+<!-- End Google Tag Manager -->
+
+
+<meta name="google-site-verification" content="b4tITLzEeeZGEpvD4mGNf3khKM4fvqejQaz9SYBQP8E">
+
+        
+    <meta http-equiv="origin-trial" content="Az6AfRvI8mo7yiW5fLfj04W21t0ig6aMsGYpIqMTaX60H+b0DkO1uDr+7BrzMcimWzv/X7SXR8jI+uvbV0IJlwYAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A+USTya+tNvDPaxUgJooz+LaVk5hPoAxpLvSxjogX4Mk8awCTQ9iop6zJ9d5ldgU7WmHqBlnQB41LHHRFxoaBwoAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7FovoGr67TUBYbnY+Z0IKoJbbmRmB8fCyirUGHavNDtD91CiGyHHSA2hDG9r9T3NjUKFi6egL3RbgTwhhcVDwUAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><style id="fit-vids-style">.fluid-width-video-container{flex-grow: 1;width:100%;}.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script><link rel="preload" href="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt" as="script"><script type="text/javascript" src="./Binary Search Trees_ BST Explained with Examples_files/f(7).txt"></script></head>
+    
+    
+        <body class="home-template">
+    
+        <div class="site-wrapper" style="height: auto !important; min-height: 0px !important;">
+            <nav class="site-nav nav-padding">
+    <div class="site-nav-left">
+        <form id="search-form" data-test-label="search-bar">
+  <div role="search" class="searchbox__wrapper">
+    <label class="fcc_sr_only" for="search-input">
+      Search
+    </label>
+    <input type="search" placeholder="Search 9,000+ tutorials" id="search-input" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style=""><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+    <button type="submit" class="ais-SearchBox-submit">
+      <svg class="ais-SearchBox-submitIcon" xmlns="https://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40">
+    <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path>
+</svg>
+
+      <span class="fcc_sr_only">Submit your search query</span>
+    </button>
+    <div id="dropdown-container"><span class="algolia-autocomplete" style="position: absolute; z-index: 100; display: none; direction: ltr;"><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="display: block; left: 0px; right: auto;"><div class="aa-dataset-1"></div></span></span></div>
+  </div>
+</form>
+
+    </div>
+    <div class="site-nav-middle">
+        <a class="site-nav-logo" href="https://www.freecodecamp.org/news" data-test-label="site-nav-logo"><img src="./Binary Search Trees_ BST Explained with Examples_files/fcc_primary.svg" alt="freeCodeCamp.org"></a>
+    </div>
+    <div class="site-nav-right">
+        <div class="nav-group">
+            <a class="nav-forum" id="nav-forum" rel="noopener noreferrer" href="https://forum.freecodecamp.org/" target="_blank" data-test-label="forum-button">Forum</a>
+            <a class="toggle-button-nav" id="nav-donate" rel="noopener noreferrer" href="https://www.freecodecamp.org/donate/" target="_blank" data-test-label="donate-button">Donate</a>
+        </div>
+    </div>
+</nav>
+
+
+            
+            <a class="banner" id="banner" data-test-label="banner" rel="noopener noreferrer" target="_blank" href="https://www.freecodecamp.org/" text-variation="default">
+    <p id="banner-text">Learn to code — <span>free 3,000-hour curriculum</span></p>
+</a>
+
+
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("banner"),t=document.getElementById("banner-text");isAuthenticated?(t.innerHTML="Support our nonprofit and our mission. <span>Donate to freeCodeCamp.org</span>.",e.href="https://www.freecodecamp.org/donate",e.setAttribute("text-variation","authenticated")):isDonor?(t.innerHTML="Thank you for supporting freeCodeCamp through <span>your donations</span>.",e.href="https://www.freecodecamp.org/news/how-to-donate-to-free-code-camp/",e.setAttribute("text-variation","donor")):(t.innerHTML="Learn to code — <span>free 3,000-hour curriculum</span>",e.href="https://www.freecodecamp.org/",e.setAttribute("text-variation","default"))}));</script>
+
+
+            <div id="error-message"></div>
+
+            
+    <main id="site-main" class="post-template site-main outer" style="height: auto !important;">
+        <div class="inner ad-layout" style="height: auto !important;">
+            <article class="post-full post " style="height: auto !important;">
+                <header class="post-full-header">
+                    <section class="post-full-meta">
+                        <time class="post-full-meta-date" datetime="Sat Nov 16 2019 17:58:00 GMT+0000 (Coordinated Universal Time)">
+                            November 16, 2019
+                        </time>
+                        
+                            <span class="date-divider">/</span>
+                            <a dir="ltr" href="https://www.freecodecamp.org/news/tag/binary-search/">
+                                #Binary Search
+                            </a>
+                        
+                    </section>
+                    <h1 class="post-full-title">Binary Search Trees: BST Explained with Examples</h1>
+                </header>
+                <div class="post-full-author-header" data-test-label="author-header-no-bio">
+                    
+                </div>
+                
+                    <figure class="post-full-image">
+                        
+    <picture>
+      <source media="(max-width: 700px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w">
+      <source media="(min-width: 701px)" sizes="(max-width: 800px) 400px, (max-width: 1170px) 700px, 1400px" srcset="https://cdn-media-2.freecodecamp.org/w1280/5f9c9f48740569d1a4ca41c4.jpg">
+      <img onerror="this.style.display=&#39;none&#39;" src="./Binary Search Trees_ BST Explained with Examples_files/5f9c9f48740569d1a4ca41c4.jpg" alt="Binary Search Trees: BST Explained with Examples" ,="" width="1280" height="720">
+    </picture>
+  
+                    </figure>
+                
+                <section class="post-full-content" style="height: auto !important; min-height: 0px !important;">
+                    <div class="post-and-sidebar" style="height: auto !important;">
+                        <section class="post-content medium-migrated-article">
+                            
+<h2 id="what-is-a-binary-search-tree">What is a Binary Search Tree?</h2><p>A tree is a data structure composed of nodes that has the following characteristics:</p><ol><li>Each tree has a root node at the top (also known as Parent Node) containing some value (can be any datatype).</li><li>The root node has zero or more child nodes.</li><li>Each child node has zero or more child nodes, and so on. This creates a subtree in the tree. Every node has its own subtree made up of its children and their children, etc. This means that every node on its own can be a tree.</li></ol><p>A binary search tree (BST) adds these two characteristics:</p><ol><li>Each node has a maximum of up to two children.</li><li>For each node, the values of its left descendent nodes are less than that of the current node, which in turn is less than the right descendent nodes (if any).</li></ol><p>The BST is built on the idea of the <a href="https://guide.freecodecamp.org/algorithms/search-algorithms/binary-search">binary search</a> algorithm, which allows for fast lookup, insertion and removal of nodes. The way that they are set up means that, on average, each comparison allows the operations to skip about half of the tree, so that each lookup, insertion or deletion takes time proportional to the logarithm of the number of items stored in the tree, &nbsp;<code>O(log n)</code> . However, some times the worst case can happen, when the tree isn't balanced and the time complexity is &nbsp;<code>O(n)</code> &nbsp;for all three of these functions. That is why self-balancing trees (AVL, red-black, etc.) are a lot more effective than the basic BST.</p><p><strong>Worst case scenario example:</strong> &nbsp;This can happen when you keep adding nodes that are &nbsp;<em>always</em> &nbsp;larger than the node before (its parent), the same can happen when you always add nodes with values lower than their parents.</p><h3 id="basic-operations-on-a-bst">Basic operations on a BST</h3><ul><li>Create: creates an empty tree.</li><li>Insert: insert a node in the tree.</li><li>Search: Searches for a node in the tree.</li><li>Delete: deletes a node from the tree.</li><li>Inorder: in-order traversal of the tree.</li><li>Preorder: pre-order traversal of the tree.</li><li>Postorder: post-order traversal of the tree.</li></ul><h4 id="create">Create</h4><p>Initially an empty tree without any nodes is created. The variable/identifier which must point to the root node is initialized with a &nbsp;<code>NULL</code> &nbsp;value.</p><h4 id="search">Search</h4><p>You always start searching the tree at the root node and go down from there. You compare the data in each node with the one you are looking for. If the compared node doesn't match then you either proceed to the right child or the left child, which depends on the outcome of the following comparison: If the node that you are searching for is lower than the one you were comparing it with, you proceed to the left child, otherwise (if it's larger) you go to the right child. Why? Because the BST is structured (as per its definition), that the right child is always larger than the parent and the left child is always lesser.</p><h6 id="breadth-first-search-bfs-">Breadth-first search (BFS)</h6><p>Breadth first search is an algorithm used to traverse a BST. It begins at the root node and travels in a lateral manner (side to side), searching for the desired node. This type of search can be described as O(n) given that each node is visited once and the size of the tree directly correlates to the length of the search.</p><h6 id="depth-first-search-dfs-">Depth-first search (DFS)</h6><p>With a Depth-first search approach, we start with the root node and travel down a single branch. If the desired node is found along that branch, great, but if not, continue upwards and search unvisited nodes. This type of search also has a big O notation of O(n).</p><h4 id="insert">Insert</h4><p>It is very similar to the search function. You again start at the root of the tree and go down recursively, searching for the right place to insert our new node, in the same way as explained in the search function. If a node with the same value is already in the tree, you can choose to either insert the duplicate or not. Some trees allow duplicates, some don't. It depends on the certain implementation.</p><h4 id="deletion">Deletion</h4><p>There are 3 cases that can happen when you are trying to delete a node. If it has,</p><ol><li>No subtree (no children): This one is the easiest one. You can simply just delete the node, without any additional actions required.</li><li>One subtree (one child): You have to make sure that after the node is deleted, its child is then connected to the deleted node's parent.</li><li>Two subtrees (two children): You have to find and replace the node you want to delete with its inorder successor (the leftmost node in the right subtree).</li></ol><p>The time complexity for creating a tree is &nbsp;<code>O(1)</code> . The time complexity for searching, inserting or deleting a node depends on the height of the tree &nbsp;<code>h</code> , so the worst case is &nbsp;<code>O(h)</code> &nbsp;in case of skewed trees.</p><h4 id="predecessor-of-a-node">Predecessor of a node</h4><p>Predecessors can be described as the node that would come right before the node you are currently at. To find the predecessor of the current node, look at the right-most/largest leaf node in the left subtree.</p><h4 id="successor-of-a-node">Successor of a node</h4><p>Successors can be described as the node that would come right after the the current node. To find the successor of the current node, look at the left-most/smallest leaf node in the right subtree.</p><h3 id="special-types-of-bt">Special types of BT</h3><ul><li>Heap</li><li>Red-black tree</li><li>B-tree</li><li>Splay tree</li><li>N-ary tree</li><li>Trie (Radix tree)</li></ul><h3 id="runtime">Runtime</h3><p><strong>Data structure: BST</strong></p><ul><li>Worst-case performance: &nbsp;<code>O(n)</code></li><li>Best-case performance: &nbsp;<code>O(1)</code></li><li>Average performance: &nbsp;<code>O(log n)</code></li><li>Worst-case space complexity: &nbsp;<code>O(1)</code></li></ul><p>Where &nbsp;<code>n</code> &nbsp;is the number of nodes in the BST. Worst case is O(n) since BST can be unbalanced.</p><h3 id="implementation-of-bst">Implementation of BST</h3><p>Here's a definition for a BST node having some data, referencing to its left and right child nodes.</p><pre><code>struct node {
+   int data;
+   struct node *leftChild;
+   struct node *rightChild;
+};
+</code></pre><h4 id="search-operation">Search Operation</h4><p>Whenever an element is to be searched, start searching from the root node. Then if the data is less than the key value, search for the element in the left subtree. Otherwise, search for the element in the right subtree. Follow the same algorithm for each node.</p><pre><code>struct node* search(int data){
+   struct node *current = root;
+   printf("Visiting elements: ");
+	
+   while(current-&gt;data != data){
+	
+      if(current != NULL) {
+         printf("%d ",current-&gt;data);
+			
+         //go to left tree
+         if(current-&gt;data &gt; data){
+            current = current-&gt;leftChild;
+         }//else go to right tree
+         else {                
+            current = current-&gt;rightChild;
+         }
+			
+         //not found
+         if(current == NULL){
+            return NULL;
+         }
+      }			
+   }
+   return current;
+}
+</code></pre><h4 id="insert-operation">Insert Operation</h4><p>Whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.</p><pre><code>void insert(int data) {
+   struct node *tempNode = (struct node*) malloc(sizeof(struct node));
+   struct node *current;
+   struct node *parent;
+
+   tempNode-&gt;data = data;
+   tempNode-&gt;leftChild = NULL;
+   tempNode-&gt;rightChild = NULL;
+
+   //if tree is empty
+   if(root == NULL) {
+      root = tempNode;
+   } else {
+      current = root;
+      parent = NULL;
+
+      while(1) {                
+         parent = current;
+			
+         //go to left of the tree
+         if(data &lt; parent-&gt;data) {
+            current = current-&gt;leftChild;                
+            //insert to the left
+				
+            if(current == NULL) {
+               parent-&gt;leftChild = tempNode;
+               return;
+            }
+         }//go to right of the tree
+         else {
+            current = current-&gt;rightChild;
+            
+            //insert to the right
+            if(current == NULL) {
+               parent-&gt;rightChild = tempNode;
+               return;
+            }
+         }
+      }            
+   }
+}        
+</code></pre><h4 id="delete-operation">Delete Operation</h4><pre><code>void deleteNode(struct node* root, int data){
+
+    if (root == NULL) root=tempnode; 
+
+    if (data &lt; root-&gt;key) 
+        root-&gt;left = deleteNode(root-&gt;left, key); 
+  
+
+    else if (key &gt; root-&gt;key) 
+        root-&gt;right = deleteNode(root-&gt;right, key); 
+
+    else
+    { 
+        if (root-&gt;left == NULL) 
+        { 
+            struct node *temp = root-&gt;right; 
+            free(root); 
+            return temp; 
+        } 
+        else if (root-&gt;right == NULL) 
+        { 
+            struct node *temp = root-&gt;left; 
+            free(root); 
+            return temp; 
+        } 
+  
+        struct node* temp = minValueNode(root-&gt;right); 
+ 
+        root-&gt;key = temp-&gt;key; 
+
+        root-&gt;right = deleteNode(root-&gt;right, temp-&gt;key); 
+    } 
+    return root; 
+
+}
+</code></pre><p>Binary search trees (BSTs) also give us quick access to predecessors and successors. Predecessors can be described as the node that would come right before the node you are currently at.</p><ul><li>To find the predecessor of the current node, look at the rightmost/largest leaf node in the left subtree. Successors can be described as the node that would come right after the node you are currently at.</li><li>To find the successor of the current node, look at the leftmost/smallest leaf node in the right subtree.</li></ul><h3 id="let-s-look-at-a-couple-of-procedures-operating-on-trees-">Let's look at a couple of procedures operating on trees.</h3><p>Since trees are recursively defined, it's very common to write routines that operate on trees that are themselves recursive.</p><p>So for instance, if we want to calculate the height of a tree, that is the height of a root node, We can go ahead and recursively do that, going through the tree. So we can say:</p><ul><li>For instance, if we have a nil tree, then its height is a 0.</li><li>Otherwise, We're 1 plus the maximum of the left child tree and the right child tree.</li><li>So if we look at a leaf for example, that height would be 1 because the height of the left child is nil, is 0, and the height of the nil right child is also 0. So the max of that is 0, then 1 plus 0.</li></ul><h4 id="height-tree-algorithm">Height(tree) algorithm</h4><pre><code>if tree = nil:
+    return 0
+return 1 + Max(Height(tree.left),Height(tree.right))
+</code></pre><h4 id="here-is-the-code-in-c-">Here is the code in C++</h4><pre><code>int maxDepth(struct node* node)
+{
+    if (node==NULL)
+        return 0;
+   else
+   {
+       int rDepth = maxDepth(node-&gt;right);
+       int lDepth = maxDepth(node-&gt;left);
+
+       if (lDepth &gt; rDepth)
+       {
+           return(lDepth+1);
+       }
+       else
+       {
+            return(rDepth+1);
+       }
+   }
+}  
+</code></pre><p>We could also look at calculating the size of a tree that is the number of nodes.</p><ul><li>Again, if we have a nil tree, we have zero nodes.</li><li>Otherwise, we have the number of nodes in the left child plus 1 for ourselves plus the number of nodes in the right child. So 1 plus the size of the left tree plus the size of the right tree.</li></ul><h4 id="size-tree-algorithm">Size(tree) algorithm</h4><pre><code>if tree = nil
+    return 0
+return 1 + Size(tree.left) + Size(tree.right)
+</code></pre><h4 id="here-is-the-code-in-c--1">Here is the code in C++</h4><pre><code>int treeSize(struct node* node)
+{
+    if (node==NULL)
+        return 0;
+    else
+        return 1+(treeSize(node-&gt;left) + treeSize(node-&gt;right));
+}
+</code></pre><h4 id="traversal">Traversal</h4><p>There are 3 kinds of traversals that are done typically over a binary search tree. All these traversals have a somewhat common way of going over the nodes of the tree.</p><h5 id="in-order">In-order</h5><p>This traversal first goes over the left subtree of the root node, then accesses the current node, followed by the right subtree of the current node. The code represents the base case too, which says that an empty tree is also a binary search tree.</p><pre><code>void inOrder(struct node* root) {
+        // Base case
+        if (root == null) {
+                return;
+        }
+        // Travel the left sub-tree first.
+        inOrder(root.left);
+        // Print the current node value
+        printf("%d ", root.data);
+        // Travel the right sub-tree next.
+        inOrder(root.right);
+}
+</code></pre><h3 id="pre-order">Pre-order</h3><p>This traversal first accesses the current node value, then traverses the left and right sub-trees respectively.</p><pre><code>void preOrder(struct node* root) {
+        if (root == null) {
+                return;
+        }
+        // Print the current node value
+        printf("%d ", root.data);
+        // Travel the left sub-tree first.
+        preOrder(root.left);
+        // Travel the right sub-tree next.
+        preOrder(root.right);
+}
+</code></pre><h3 id="post-order">Post-order</h3><p>This traversal puts the root value at last, and goes over the left and right sub-trees first. The relative order of the left and right sub-trees remain the same. Only the position of the root changes in all the above mentioned traversals.</p><pre><code>void postOrder(struct node* root) {
+        if (root == null) {
+                return;
+        }
+        // Travel the left sub-tree first.
+        postOrder(root.left);
+        // Travel the right sub-tree next.
+        postOrder(root.right);
+        // Print the current node value
+        printf("%d ", root.data);
+}
+</code></pre><h3 id="relevant-videos-on-freecodecamp-youtube-channel">Relevant videos on freeCodeCamp YouTube channel</h3><figure class="kg-card kg-embed-card"><div class="fluid-width-video-container"><div class="fluid-width-video-wrapper" style="padding-top: 56.25%;"><iframe src="./Binary Search Trees_ BST Explained with Examples_files/5cU1ILGy6dM.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="Embedded content" loading="lazy" name="fitvid0"></iframe></div></div></figure><h2 id="and-binary-search-tree-traversal-and-height">And Binary Search Tree: Traversal and Height</h2><figure class="kg-card kg-embed-card"><div class="fluid-width-video-container"><div class="fluid-width-video-wrapper" style="padding-top: 56.25%;"><iframe src="./Binary Search Trees_ BST Explained with Examples_files/Aagf3RyK3Lw.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="Embedded content" loading="lazy" name="fitvid1"></iframe></div></div></figure><h3 id="following-are-common-types-of-binary-trees-">Following are common types of Binary Trees:</h3><p>Full Binary Tree/Strict Binary Tree: A Binary Tree is full or strict if every node has exactly 0 or 2 children.</p><pre><code>          18
+         /   \
+       /       \  
+     15         30  
+    /  \       /  \
+  40    50   100   40
+</code></pre><p>In Full Binary Tree, number of leaf nodes is equal to number of internal nodes plus one.</p><p>Complete Binary Tree: A Binary Tree is complete Binary Tree if all levels are completely filled except possibly the last level and the last level has all keys as left as possible</p><pre><code>           18
+         /    \
+       /        \  
+     15         30  
+    /  \       /  \
+  40    50   100   40
+ /  \   /
+8    7 9 
+</code></pre><p>Perfect Binary Tree A Binary tree is Perfect Binary Tree in which all internal nodes have two children and all leaves are at the same level.</p><pre><code>          18
+         /  \
+       /      \  
+     15        30  
+    /  \      /  \
+  40    50  100   40
+</code></pre><h3 id="augmenting-a-bst">Augmenting a BST</h3><p>Sometimes we need to store some additional information with the traditional data structures to make our tasks easier. For example, consider a scenario where you are supposed to find the ith smallest number in a set. You can use brute force here but we can reduce the complexity of the problem to <code>O(lg n)</code> by augmenting a red-black or any self-balancing tree (where n is the number of elements in the set). We can also compute rank of any element in <code>O(lg n)</code> time. Let us consider a case where we are augmenting a red-black tree to store the additional information needed. Besides the usual attributes, we can store number of internal nodes in the subtree rooted at x(size of the subtree rooted at x including the node itself). Let x be any arbitrary node of a tree.</p><p><code>x.size = x.left.size + x.right.size + 1</code></p><p>While augmenting the tree, we should keep in mind, that we should be able to maintain the augmented information as well as do other operations like insertion, deletion, updating in <code>O(lg n)</code> time.</p><p>Since, we know that the value of x.left.size will give us the number of nodes which proceed x in the order traversal of the tree. Thus, <code>x.left.size + 1</code> is the rank of x within the subtree rooted at x.</p>
+
+                        </section>
+                        
+                            <div class="sidebar" style="height: auto !important;">
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads.html" data-google-container-id="a!2" data-google-query-id="CM_XtNHfhfsCFRNowQodl0oC_Q" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_2_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(1).html" data-google-container-id="a!3" data-google-query-id="CMSntdHfhfsCFSVLwQod0hQIGA" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_3_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(2).html" data-google-container-id="a!4" data-google-query-id="COOphtPfhfsCFVJpwQodqCYGOA" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_4_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(3).html" data-google-container-id="a!5" data-google-query-id="CKezxdTfhfsCFXiFywEdY-ACwA" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_5_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(4).html" data-google-container-id="a!6" data-google-query-id="CJqp3qn8hfsCFagewQod1CUD2Q" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_6_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_6" name="aswift_6" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(5).html" data-google-container-id="a!7" data-google-query-id="CJ_jqez8hfsCFUY9wQodccAEig" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_7_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_7" name="aswift_7" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(6).html" data-google-container-id="a!8" data-google-query-id="COPYtP_8hfsCFUUQwQodnnECxQ" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_8_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_8" name="aswift_8" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(7).html" data-google-container-id="a!9" data-google-query-id="CNKvq8T9hfsCFQRA7AodDrAJZQ" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper" style="height: auto !important; min-height: 0px !important;">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_9_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_9" name="aswift_9" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(8).html" data-google-container-id="a!a" data-google-query-id="CNfJpcX9hfsCFUMToQodVjYBHg" data-load-complete="true"></iframe></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><div id="aswift_10_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><div id="aswift_11_host" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                            </div>
+                        
+                    </div>
+                    <hr>
+                    
+
+                    
+                    
+                        
+    
+
+
+<p data-test-label="social-row-cta" class="social-row">
+    If this article was helpful, <button id="tweet-btn" class="cta-button" data-test-label="tweet-button" onclick="window.open(
+    &#39;https://twitter.com/intent/tweet?text=Binary%20Search%20Trees%3A%20BST%20Explained%20with%20Examples%0A%0Ahttps://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/&#39;,
+    &#39;share-twitter&#39;,
+    &#39;width=550, height=235&#39;
+  ); return false;">tweet it</button>.
+</p>
+
+
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t=document.getElementById("tweet-btn"),e=window.location,n="Binary%20Search%20Trees%3A%20BST%20Explained%20with%20Examples".replace(/&#39;/g,"%27"),o="",r="",i=Boolean("");let a;if(i&&(o||r)){const t={originalPostAuthor:"",currentPostAuthor:"freeCodeCamp.org"};a=encodeURIComponent(`Thank you ${o||t.originalPostAuthor} for writing this helpful article, and ${r||t.currentPostAuthor} for translating it.`)}else!i&&r&&(a=encodeURIComponent(`Thank you ${r} for writing this helpful article.`));const l=`window.open(\n    '${a?`https://twitter.com/intent/tweet?text=${a}%0A%0A${n}%0A%0A${e}`:`https://twitter.com/intent/tweet?text=${n}%0A%0A${e}`}',\n    'share-twitter',\n    'width=550, height=235'\n  ); return false;`;t.setAttribute("onclick",l)}));</script>
+
+
+                        
+
+<div class="learn-cta-row" data-test-label="learn-cta-row">
+    <p>
+        Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. <a href="https://www.freecodecamp.org/learn/" class="cta-button" id="learn-to-code-cta" rel="noopener noreferrer" target="_blank">Get started</a>
+    </p>
+</div>
+
+                    
+                </section>
+                
+                    <div class="banner-ad bottom">
+                        <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><div id="aswift_12_host" style="border: none; height: 280px; width: 1060px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"></div></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                    </div>
+                
+            </article>
+        </div>
+    </main>
+
+
+            
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-desc-col">
+                <p data-test-label="tax-exempt-status">freeCodeCamp is a donor-supported tax-exempt 501(c)(3) nonprofit organization (United States Federal Tax Identification Number: 82-0779546)</p>
+                <p data-test-label="mission-statement">Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.</p>
+                <p data-test-label="donation-initiatives">Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.</p>
+                <p class="footer-donation" data-test-label="donate-text">
+                    You can <a href="https://www.freecodecamp.org/donate/" class="inline" rel="noopener noreferrer" target="_blank">make a tax-deductible donation here</a>.
+                </p>
+            </div>
+            <div class="trending-guides" data-test-label="trending-guides">
+                <div class="col-header">Trending Guides</div>
+                <div class="trending-guides-row">
+                    <div class="footer-col footer-col-1">
+                        <a href="https://www.freecodecamp.org/news/learn-javascript-free-js-courses-for-beginners/" rel="noopener noreferrer" target="_blank">Learn JavaScript
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/linux-ln-how-to-create-a-symbolic-link-in-linux-example-bash-command" rel="noopener noreferrer" target="_blank">Linux ln Example
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/javascript-document-ready-jquery-example/" rel="noopener noreferrer" target="_blank">JS document.ready()
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-delete-a-row-in-sql-example-query/" rel="noopener noreferrer" target="_blank">Delete a Row in SQL
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-round-numbers-up-or-down-in-python/" rel="noopener noreferrer" target="_blank">Python Round to Int
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/what-is-antimalware-service-executable-why-is-it-high-cpu-disk-usage/" rel="noopener noreferrer" target="_blank">What is msmpeng.exe?
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/queue-data-structure-definition-and-java-example-code/" rel="noopener noreferrer" target="_blank">Queue Data Structure
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/learn-web-development-free-full-stack-developer-courses-for-beginners/" rel="noopener noreferrer" target="_blank">Learn Web Development
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-install-node-js-and-npm-on-windows-2/" rel="noopener noreferrer" target="_blank">Install Node on Windows
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-remove-character-from-a-string-how-to-delete-characters-from-strings/" rel="noopener noreferrer" target="_blank">Remove Char from String
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-2">
+                        <a href="https://www.freecodecamp.org/news/rust-in-replit/" rel="noopener noreferrer" target="_blank">Rust Lang
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-set-operations-explained-with-examples/" rel="noopener noreferrer" target="_blank">Python Sets
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/c-string-std-string-example-in-cpp/" rel="noopener noreferrer" target="_blank">C++ Strings
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-map-explained-with-examples/" rel="noopener noreferrer" target="_blank">Python map()
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-pop-how-to-pop-from-a-list-or-an-array-in-python/" rel="noopener noreferrer" target="_blank">Python .pop()
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-array-tutorial-define-index-methods/" rel="noopener noreferrer" target="_blank">Python arrays
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/npm-uninstall-how-to-remove-a-package/" rel="noopener noreferrer" target="_blank">npm Uninstall
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/insertion-sort-algorithm-example-in-java-and-c/" rel="noopener noreferrer" target="_blank">Insertion Sort
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-if-else-python-conditional-syntax-example/" rel="noopener noreferrer" target="_blank">Python If-Else
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/all-caps-in-css-how-to-uppercase-text-with-style/" rel="noopener noreferrer" target="_blank">All Caps in CSS
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-3">
+                        <div class="footer-left">
+                            <a href="https://www.freecodecamp.org/news/how-to-open-task-manager-on-mac-apple-shortcut-tutorial/" rel="noopener noreferrer" target="_blank">Open Task Manager on Mac
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/parseint-in-javascript-js-string-to-int-example/" rel="noopener noreferrer" target="_blank">parseInt() in JavaScript
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/print-statement-in-python-how-to-print-with-example-syntax-command/" rel="noopener noreferrer" target="_blank">Print statement in Python
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/remove-directory-in-linux-how-to-delete-a-folder-from-the-command-line/" rel="noopener noreferrer" target="_blank">Remove Directory in Linux
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/python-to-lowercase-a-string-str-lower-example/" rel="noopener noreferrer" target="_blank">Python str.lower() Example
+                            </a>
+                        </div>
+
+                        <div class="footer-right">
+                            <a href="https://www.freecodecamp.org/news/second-monitor-not-detected-fixed-windows10/" rel="noopener noreferrer" target="_blank">Second Monitor Not Detected
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/c-string-how-to-declare-strings-in-the-c-programming-language/" rel="noopener noreferrer" target="_blank">How to Declare Strings in C
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/what-is-len-in-python-how-to-use-the-len-function-to-find-the-length-of-a-string/" rel="noopener noreferrer" target="_blank">How to Use .len() in Python
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/python-convert-string-to-int-how-to-cast-a-string-in-python/" rel="noopener noreferrer" target="_blank">Python Convert String to Int
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/how-to-create-a-website-free-of-cost-website-builder-platform-guide/" rel="noopener noreferrer" target="_blank">How to create a free website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="col-header" data-test-label="our-nonprofit">Our Nonprofit</div>
+            <div class="footer-divider"></div>
+            <div class="our-nonprofit">
+                <a href="https://www.freecodecamp.org/news/about/" rel="noopener noreferrer" target="_blank" data-test-label="about">
+                    About
+                </a>
+                <a href="https://www.linkedin.com/school/free-code-camp/people/" rel="noopener noreferrer" target="_blank" data-test-label="alumni">
+                    Alumni Network
+                </a>
+                <a href="https://github.com/freeCodeCamp/" rel="noopener noreferrer" target="_blank" data-test-label="open-source">
+                    Open Source
+                </a>
+                <a href="https://www.freecodecamp.org/news/shop/" rel="noopener noreferrer" target="_blank" data-test-label="shop">
+                    Shop
+                </a>
+                <a href="https://www.freecodecamp.org/news/support/" rel="noopener noreferrer" target="_blank" data-test-label="support">
+                    Support
+                </a>
+                <a href="https://www.freecodecamp.org/news/sponsors/" rel="noopener noreferrer" target="_blank" data-test-label="sponsors">
+                    Sponsors
+                </a>
+                <a href="https://www.freecodecamp.org/news/academic-honesty-policy/" rel="noopener noreferrer" target="_blank" data-test-label="honesty">
+                    Academic Honesty
+                </a>
+                <a href="https://www.freecodecamp.org/news/code-of-conduct/" rel="noopener noreferrer" target="_blank" data-test-label="coc">
+                    Code of Conduct
+                </a>
+                <a href="https://www.freecodecamp.org/news/privacy-policy/" rel="noopener noreferrer" target="_blank" data-test-label="privacy">
+                    Privacy Policy
+                </a>
+                <a href="https://www.freecodecamp.org/news/terms-of-service/" rel="noopener noreferrer" target="_blank" data-test-label="tos">
+                    Terms of Service
+                </a>
+                <a href="https://www.freecodecamp.org/news/copyright-policy/" rel="noopener noreferrer" target="_blank" data-test-label="copyright">
+                    Copyright Policy
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+        
+        
+        
+
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D6RKKP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+        
+    <script defer="" src="./Binary Search Trees_ BST Explained with Examples_files/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon="{&quot;rayId&quot;:&quot;761cebcf28e32d46&quot;,&quot;token&quot;:&quot;bdb993c6dde44e178aabd9555e75e4f4&quot;,&quot;version&quot;:&quot;2022.10.3&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Binary Search Trees_ BST Explained with Examples_files/ads(9).html" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><iframe src="./Binary Search Trees_ BST Explained with Examples_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./Binary Search Trees_ BST Explained with Examples_files/zrt_lookup.html" style="display: none;"></iframe></html>
