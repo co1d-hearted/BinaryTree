@@ -20,4 +20,4 @@ Why would a programmer want to uses trees. Well, here are a few reasons:
 
 ## How do Binary Trees Work
 
-![Binary Tree](images/Binary-Tree-in-Data-Structure-1.png.png)
+![Binary Tree](/images/Binary-Tree-in-Data-Structure-1.png.png)
