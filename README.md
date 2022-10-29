@@ -146,7 +146,20 @@ We traverse the node in a pre-order manner as per requirement.
 
 ### Inorder Traversal:
 
-We traverse the node in an in-order manner as per requirement.
+This traversal first goes over the left subtree of the root node, then accesses the current node, followed by the right subtree of the current node. The code represents the base case too, which says that an empty tree is also a binary search tree.
+
+	void inOrder(struct node* root) {
+        // Base case
+        if (root == null) {
+                return;
+        }
+        // Travel the left sub-tree first.
+        inOrder(root.left);
+        // Print the current node value
+        printf("%d ", root.data);
+        // Travel the right sub-tree next.
+        inOrder(root.right);
+	}
 
 ### Postorder Traversal:
 
