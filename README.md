@@ -1,4 +1,4 @@
-# BinaryTrees
+# Binary Trees
 
 
 ## Intro
@@ -200,3 +200,7 @@ Binary trees can also be used for classification purposes. A decision tree is a 
 
 ![Decision Tree](Decision-Tree.webp)
 
+## Works Cited
+https://www.baeldung.com/cs/applications-of-binary-trees#:~:text=In%20computing%2C%20binary%20trees%20are,insertion%2C%20deletion%2C%20and%20traversal.
+https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/#:~:text=An%20example%20of%20a%20Perfect,of%20parents%20as%20their%20children.&text=A%20binary%20tree%20is%20balanced,is%20the%20number%20of%20nodes.
+https://www.freecodecamp.org/news/binary-search-trees-bst-explained-with-examples/
